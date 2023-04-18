@@ -14,7 +14,7 @@ class WebsiteController extends Controller
         $endDateTime = $request->input('endDateTime');
 
         $websites = Website::withCount(['visits' => function ($query) use ($startDateTime, $endDateTime) {
-            if (!is_null($startDateTime) && !is_null($endDateTime)) {
+            if (!empty($startDateTime) && !empty($endDateTime)) {
                 $query->whereBetween('created_at', [$startDateTime, $endDateTime]);
             }
         }])->get();

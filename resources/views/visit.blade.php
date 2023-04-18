@@ -4,19 +4,20 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
-        <title>Website Visits Tracker</title>
+        <title>Thank you for your visit!</title>
 
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-        <style>
+       
+       <style>
             body {
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 height: 100vh;
                 margin: 0;
+                background-image:linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3));
             }
             h1 {
                 font-size: 48px;
@@ -29,13 +30,12 @@
         </style>
     </head>
     <body>
-         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
             <h1>Thank you for your visit!</h1>
-            <!-- <script src="/resources/js/visits-tracker.js"></script> -->
         <script>
-            const csrfToken = '{{ csrf_token() }}';
             function increaseVisit() {
-                let hostname = window.location.hostname;
+                let hostname = window.location.hostname + ':' + window.location.port;
                 this.getIP().then(
                     ip => {
                         this.increase(hostname, ip.toString());
@@ -61,7 +61,6 @@
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': csrfToken 
             },
                 body: JSON.stringify({ "hostname": hostname, "ip": ip})
             })
