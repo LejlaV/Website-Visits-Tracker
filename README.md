@@ -2,6 +2,8 @@ Database schema, screenrecording and the demonstration of how the application is
 
 https://vimeo.com/819081149?share=copy
 
+https://vimeo.com/819453691?share=copy
+
 DESCRIPTION:
 
 Database schema is a simple database which consists of two tables. Websites and visits, they are connected with one to many relationship. In the table website we’re storing id, hostname and timestamps fields (created_at, updated_at). In visits table we’re storing id, website_id, ip address and timestamps fields (created_at, updated_at) as well.
